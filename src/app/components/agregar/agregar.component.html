@@ -1,0 +1,60 @@
+<div class="container mt-4 ">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <h3>{{titulo}} <div *ngIf="loading" class="spinner-border text-secondary d-flex justify-content-between"
+              role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </h3>
+          <!--Creacion de obras-->
+          <div *ngIf="submitted && createObra.invalid" class="alert alert-danger" role="alert"> CAMPOS OBLIGATORIOS
+          </div>
+          <form class="mt-4" [formGroup]="createObra" (ngSubmit)="AgregarEditarObra ()">
+            <div clas="row">
+              <div class="col">
+                <!--Titulo de la obra-->
+                <input type="text"  class="form-control mt-4" formControlName="titulo" placeholder="Titulo" pInputText>
+                </div>
+                <!--Autor de la obra-->
+                <div class="col">
+                <input type="text" class="form-control mt-4" formControlName="autor" placeholder="Autor" pInputText>
+                </div>
+                <!--Fecha de publicación de la obra-->
+                <div class="col">
+                <input type="date" class="form-control mt-4" formControlName="fecha" placeholder="Lanzamiento" pInputText>
+                </div>
+                <!--Descripcion de la obra-->
+                <div class="col">
+                <input type="text" class="form-control mt-4" formControlName="descripcion" placeholder="Descripcion" pInputText>
+                </div>
+                <!--Espacio para cargar la imagen-->
+                <div class="col">
+                <label for="file-upload" class="d-flex justify-content-between btn-lg mt-4">
+
+                <i  class="fas fa-file-image "> </i> 
+
+                </label>
+                <input type="text" class="form-control " style="display:none;"  placeholder="imagen" >
+                <input (change)="newImage($event)" id="file-upload" style="display:none;" type="file" class="form-control justify-content-between float-right  mt-4 "  
+                 accept="image/*" formControlName="imagen" placeholder="imagen"> 
+                
+              </div>
+              
+              <!--Botones de la ventana de creación del espacio designado a la obra-->
+            </div>
+            <div class="card-body d-flex justify-content-between align-items-center mt-3">
+              <button pButton type="button" class="p-button-secondary" routerLink="lista-obras" style="background-color: 	#4682B4;">Regresar</button>
+              <button pButton type="submit" class="p-button-success" badge="8"style="background-color: #4169E1;">Guardar</button>
+            </div>
+            <div class="col">
+              <img class="img"[src]="newImg">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
